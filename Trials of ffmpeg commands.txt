@@ -1,0 +1,30 @@
+ffmpeg -i input.wav -vn -ar 44100 -ac 2 -b:a 192k output.mp3
+ffmpeg -i Outputs/OutFile.mp3 -ac 1 -b:a 16k -ar 24000 -write_xing 0 Outputs/OutFileStage2.mp3
+ffmpeg -i input.file -map 0:a:0 -b:a 96k output.mp3
+stg1 = f'ffmpeg -i {src} -filter:a "atempo={spd},volume={vol}" -q:a 100 {out}'
+
+
+
+
+ffmpeg -y -i OutFile.mp3 -vn -ar 44100 -ac 2 -b:a 16k OutFileStage4.mp3
+ffmpeg -y -i OutFile.mp3 -vn -ar 44100 -ac 2 -b:a 192k OutFileStage2.mp3
+
+ffmpeg -y -i OutFile.mp3 -map 0:a:0 -b:a 96k OutFileStage5.mp3
+
+
+ffmpeg -y -i TestFile.mp3 -filter:a "atempo=1.35,volume=1.05" -q:a 100 -map 0:a:0 -b:a 96k OutFileFull.mp3
+
+RGC001_1.mp3
+
+ffmpeg -y -i RGC001_1.mp3 -filter:a "atempo=1.35,volume=1.05" -q:a 100 -map 0:a:0 -b:a 96k RGC001_1c.mp3
+
+
+ffmpeg -y -i RGC001_1.mp3 -filter:a "atempo=1.35,volume=1.05" -q:a 100 -b:a 96k RGC001_1d.mp3
+
+ffmpeg -y -i RGC001_1.mp3 -filter:a "atempo=1.35,volume=1.05" -vn -ar 44100 -ac 2 -b:a 16k RGC001_1e.mp3
+
+
+ffmpeg -y -i RGC001_1.mp3 -filter:a "atempo=1.35,volume=1.05" -vn -ar 44100 -ac 2 -b:a 16k -write_xing 0 RGC001_1e.mp3
+
+
+ffmpeg -y -i RGC001_1.mp3 -filter:a "atempo=1.35,volume=0.95" -vn -ar 44100 -ac 2 -b:a 16k -write_xing 0 RGC001_1f.mp3
